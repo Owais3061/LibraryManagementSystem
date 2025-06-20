@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>📚 Book List</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .book-table-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 15px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background-color: #f3f4f6;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background-color: #f9fafb;
+    }
+
+    .footer-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .footer-link a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+
+    .footer-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById("themeBtn");
+
+    body.classList.toggle("dark-theme");
+
+    if (body.classList.contains("dark-theme")) {
+      btn.innerText = "🌞 Light Mode";
+      btn.style.backgroundColor = "#111827";
+    } else {
+      btn.innerText = "🌙 Dark Mode";
+      btn.style.backgroundColor = "#4f46e5";
+    }
+  }
+</script>
+</body>
+</html>
+
+<body>
+    <button onclick="toggleTheme()" id="themeBtn" class="theme-toggle-btn">
+  🌙 Dark Mode
+</button>
+
+  <div class="book-table-container">
+    <h1 style="text-align:center; margin-bottom: 25px;">📚 Available Books in Library</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Book Title</th>
+          <th>Author</th>
+          <th>ISBN</th>
+          <th>Category</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Python Basics</td>
+          <td>John Doe</td>
+          <td>1234567890</td>
+          <td>Programming</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>Data Structures</td>
+          <td>Jane Smith</td>
+          <td>0987654321</td>
+          <td>Computer Science</td>
+          <td>2</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer-link">
+      <a href="index.html">← Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>

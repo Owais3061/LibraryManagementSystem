@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💰 Fine Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById("themeBtn");
+
+    body.classList.toggle("dark-theme");
+
+    if (body.classList.contains("dark-theme")) {
+      btn.innerText = "🌞 Light Mode";
+      btn.style.backgroundColor = "#111827";
+    } else {
+      btn.innerText = "🌙 Dark Mode";
+      btn.style.backgroundColor = "#4f46e5";
+    }
+  }
+</script>
+</body>
+</html>
+
+<body>
+    <button onclick="toggleTheme()" id="themeBtn" class="theme-toggle-btn">
+  🌙 Dark Mode
+</button>
+
+  <div class="form-container">
+    <div class="form-card">
+      <h1>💰 Fine Calculator</h1>
+      <form id="fineForm" onsubmit="calcFine(event)">
+        <input type="number" id="lateDays" placeholder="⌛ Days Late" min="0" required />
+        <button type="submit">🧾 Calculate Fine</button>
+      </form>
+
+      <div id="fineOutput" style="margin-top: 20px; font-weight: 500; color: #ef4444;"></div>
+
+      <div class="footer-link">
+        <a href="index.html">← Back to Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calcFine(e) {
+      e.preventDefault();
+      const days = parseInt(document.getElementById("lateDays").value);
+      const finePerDay = 5;
+      const total = days * finePerDay;
+
+      document.getElementById("fineOutput").innerText =
+        days === 0
+          ? "✅ No fine! Returned on time."
+          : `💸 Fine: ₹${total} for ${days} day(s) late.`;
+    }
+  </script>
+</body>
+</html>

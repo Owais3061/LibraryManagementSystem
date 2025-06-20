@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add New Book - Library System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 🌗 Theme Toggle Button -->
+  <button onclick="toggleTheme()" id="themeBtn" class="theme-toggle-btn">
+    🌙 Dark Mode
+  </button>
+
+  <!-- 📚 Book Form Container -->
+  <div class="form-container">
+    <div class="form-card">
+      <h1>Add New Book</h1>
+      <form action="#" method="post" class="add-book-form">
+        <input type="text" name="bookName" placeholder="📚 Book Title" required />
+        <input type="text" name="author" placeholder="✍️ Author Name" required />
+        <input type="text" name="isbn" placeholder="🔢 ISBN Number" required />
+        <input type="text" name="category" placeholder="📂 Category (e.g. Fiction, Science)" required />
+        <input type="number" name="quantity" placeholder="📦 Quantity" required min="1" />
+
+        <button type="submit">➕ Add Book</button>
+      </form>
+
+      <div class="footer-link">
+        <a href="index.html">← Back to Dashboard</a>
+      </div>
+
+      <!-- 👣 Footer -->
+      <footer style="margin-top: 30px; text-align: center; font-size: 14px; color: #6b7280;">
+        Developed by Owais Shakil Bhat © 2025
+      </footer>
+    </div>
+  </div>
+
+  <!-- 🌙 Theme Toggle Script -->
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const btn = document.getElementById("themeBtn");
+
+      body.classList.toggle("dark-theme");
+
+      if (body.classList.contains("dark-theme")) {
+        btn.innerText = "🌞 Light Mode";
+        btn.style.backgroundColor = "#111827";
+      } else {
+        btn.innerText = "🌙 Dark Mode";
+        btn.style.backgroundColor = "#4f46e5";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -3,41 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Library Dashboard</title>
-  <link rel="stylesheet" href="css/style.css"/>
+  <title>📘 Book Management Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="dashboard-page">
-  <header>
-    <h1>📚 Library Management System</h1>
-    <p>Welcome to your digital library dashboard!</p>
-  </header>
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById("themeBtn");
 
-  <nav class="nav-bar">
-    <a href="books.html">Books</a>
-    <a href="students.html">Students</a>
-    <a href="settings.html">Settings</a>
-    <a href="login.html">Logout</a>
-  </nav>
+    body.classList.toggle("dark-theme");
 
-  <main class="dashboard">
-    <div class="card">
-      <h2>Add / Manage Books</h2>
-      <p>Add, edit, issue, or return books.</p>
+    if (body.classList.contains("dark-theme")) {
+      btn.innerText = "🌞 Light Mode";
+      btn.style.backgroundColor = "#111827";
+    } else {
+      btn.innerText = "🌙 Dark Mode";
+      btn.style.backgroundColor = "#4f46e5";
+    }
+  }
+</script>
+</body>
+</html>
+
+<body>
+  <button onclick="toggleTheme()" id="themeBtn" class="theme-toggle-btn">
+  🌙 Dark Mode
+</button>
+
+  <div class="dashboard-container">
+    <nav class="navbar">
+      <h2>📘 Book Management</h2>
+      <div class="nav-links">
+        <a href="#">Dashboard</a>
+        <a href="#">Students</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+      </div>
+      <button onclick="toggleTheme()" id="themeBtn" style="position: fixed; top: 20px; right: 20px; padding: 10px 16px; border-radius: 8px; background: #4f46e5; color: white; border: none; cursor: pointer;">
+  🌙 Dark Mode
+</button>
+
+    </nav>
+
+    <p class="dashboard-desc">Manage books in your digital library</p>
+
+    <div class="section">
+      <h3>📗 Add Book</h3>
+      <input type="text" placeholder="Book Title" />
+      <input type="text" placeholder="Author" />
+      <input type="text" placeholder="ISBN Number" />
+      <button>Add Book</button>
     </div>
 
-    <div class="card">
-      <h2>Student Records</h2>
-      <p>Track student history and fines.</p>
+    <div class="section">
+      <h3>📕 Issue Book</h3>
+      <input type="text" placeholder="Student Name" />
+      <input type="text" placeholder="Book Title" />
+      <button>Issue</button>
     </div>
 
-    <div class="card">
-      <h2>Reminders & Notifications</h2>
-      <p>Send alerts via Email/SMS.</p>
+    <div class="section">
+      <h3>📙 Return Book</h3>
+      <input type="text" placeholder="Book Title" />
+      <input type="text" placeholder="Return Date (dd-mm-yyyy)" />
+      <button>Return</button>
     </div>
-  </main>
 
-  <footer>
-    <p>Developed by Owais Shakil Bhat &copy; 2025</p>
-  </footer>
+    <div class="section">
+      <h3>💰 Calculate Fine</h3>
+      <input type="number" placeholder="Days Late" />
+      <button>Calculate</button>
+    </div>
+
+    <footer class="footer">
+      Developed by Owais Shakil Bhat © 2025
+    </footer>
+  </div>
+
 </body>
 </html>

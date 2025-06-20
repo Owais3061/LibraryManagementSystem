@@ -76,8 +76,31 @@
       text-decoration: none;
     }
   </style>
+  <script>
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById("themeBtn");
+
+    body.classList.toggle("dark-theme");
+
+    if (body.classList.contains("dark-theme")) {
+      btn.innerText = "🌞 Light Mode";
+      btn.style.backgroundColor = "#111827";
+    } else {
+      btn.innerText = "🌙 Dark Mode";
+      btn.style.backgroundColor = "#4f46e5";
+    }
+  }
+</script>
+</body>
+</html>
+
 </head>
 <body class="dashboard-page">
+  <button onclick="toggleTheme()" id="themeBtn" class="theme-toggle-btn">
+  🌙 Dark Mode
+</button>
+
   <div class="login-container">
     <h1>📚 Login</h1>
 
@@ -101,9 +124,6 @@
       <button type="submit">Login as Student</button>
       <a href="forget-password.html" class="forgot">Forgot Password?</a>
     </div>
-    <h2>Welcome to Library Dashboard</h2>
-<p>You are now logged in.</p>
-    <a href="login.html">Logout / Back to Login</a>
   </div>
 
   <script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>📙 Return Book</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById("themeBtn");
+
+    body.classList.toggle("dark-theme");
+
+    if (body.classList.contains("dark-theme")) {
+      btn.innerText = "🌞 Light Mode";
+      btn.style.backgroundColor = "#111827";
+    } else {
+      btn.innerText = "🌙 Dark Mode";
+      btn.style.backgroundColor = "#4f46e5";
+    }
+  }
+</script>
+</body>
+</html>
+
+<body>
+  <button onclick="toggleTheme()" id="themeBtn" class="theme-toggle-btn">
+  🌙 Dark Mode
+</button>
+  
+  <div class="form-container">
+    <div class="form-card">
+      <h1>📙 Return Book</h1>
+      <form id="returnForm" onsubmit="calculateFine(event)">
+        <input type="text" id="bookTitle" placeholder="📚 Book Title" required />
+        <label style="text-align: left; display: block; margin-bottom: 5px; font-size: 14px;">Issue Date:</label>
+        <input type="date" id="issueDate" required />
+        <label style="text-align: left; display: block; margin-bottom: 5px; font-size: 14px;">Return Date:</label>
+        <input type="date" id="returnDate" required />
+        <button type="submit">↩️ Return & Calculate Fine</button>
+      </form>
+
+      <div id="fineResult" style="margin-top: 20px; font-weight: 500; color: #ef4444;"></div>
+
+      <div class="footer-link">
+        <a href="index.html">← Back to Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateFine(event) {
+      event.preventDefault();
+
+      const issueDate = new Date(document.getElementById("issueDate").value);
+      const returnDate = new Date(document.getElementById("returnDate").value);
+      const allowedDays = 7; // change if needed
+      const finePerDay = 5;
+
+      const diffTime = returnDate - issueDate;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const lateDays = diffDays - allowedDays;
+
+      let fineText = "";
+
+      if (lateDays > 0) {
+        fineText = `🧾 You are ${lateDays} day(s) late. Fine = ₹${lateDays * finePerDay}`;
+      } else {
+        fineText = "✅ No fine! Book returned on time.";
+      }
+
+      document.getElementById("fineResult").innerText = fineText;
+    }
+  </script>
+</body>
+</html>

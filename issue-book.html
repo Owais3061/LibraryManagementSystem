@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>📕 Issue Book</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById("themeBtn");
+
+    body.classList.toggle("dark-theme");
+
+    if (body.classList.contains("dark-theme")) {
+      btn.innerText = "🌞 Light Mode";
+      btn.style.backgroundColor = "#111827";
+    } else {
+      btn.innerText = "🌙 Dark Mode";
+      btn.style.backgroundColor = "#4f46e5";
+    }
+  }
+</script>
+</body>
+</html>
+
+<body>
+   <button onclick="toggleTheme()" id="themeBtn" class="theme-toggle-btn">
+  🌙 Dark Mode
+</button>
+ 
+  <div class="form-container">
+    <div class="form-card">
+      <h1>📕 Issue Book</h1>
+      <form action="#" method="post">
+        <input type="text" name="studentName" placeholder="👨‍🎓 Student Name" required />
+        <input type="text" name="bookTitle" placeholder="📚 Book Title" required />
+        <input type="date" name="issueDate" required />
+        <button type="submit">📤 Issue Book</button>
+      </form>
+
+      <div class="footer-link">
+        <a href="index.html">← Back to Dashboard</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

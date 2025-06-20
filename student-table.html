@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>👨‍🎓 Student Records</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .table-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 15px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background-color: #f3f4f6;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background-color: #f9fafb;
+    }
+
+    .status-returned {
+      color: green;
+      font-weight: 500;
+    }
+
+    .status-pending {
+      color: red;
+      font-weight: 500;
+    }
+
+    .footer-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .footer-link a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById("themeBtn");
+
+    body.classList.toggle("dark-theme");
+
+    if (body.classList.contains("dark-theme")) {
+      btn.innerText = "🌞 Light Mode";
+      btn.style.backgroundColor = "#111827";
+    } else {
+      btn.innerText = "🌙 Dark Mode";
+      btn.style.backgroundColor = "#4f46e5";
+    }
+  }
+</script>
+</body>
+</html>
+
+<body><button onclick="toggleTheme()" id="themeBtn" class="theme-toggle-btn">
+  🌙 Dark Mode
+</button>
+
+
+  <div class="table-container">
+    <h1 style="text-align:center; margin-bottom: 25px;">👨‍🎓 Student Issued Book Records</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Roll No</th>
+          <th>Book Issued</th>
+          <th>Issue Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HCRZ</td>
+          <td>ST101</td>
+          <td>Python Basics</td>
+          <td>01-07-2025</td>
+          <td class="status-pending">Not Returned</td>
+        </tr>
+        <tr>
+          <td>ELLEN</td>
+          <td>ST102</td>
+          <td>Java for Beginners</td>
+          <td>28-06-2025</td>
+          <td class="status-returned">Returned</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer-link">
+      <a href="index.html">← Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>
