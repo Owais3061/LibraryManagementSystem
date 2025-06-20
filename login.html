@@ -101,6 +101,9 @@
       <button type="submit">Login as Student</button>
       <a href="forget-password.html" class="forgot">Forgot Password?</a>
     </div>
+    <h2>Welcome to Library Dashboard</h2>
+<p>You are now logged in.</p>
+    <a href="login.html">Logout / Back to Login</a>
   </div>
 
   <script>
@@ -122,6 +125,27 @@
       studentForm.classList.add("active");
       adminForm.classList.remove("active");
     });
-  </script>
+    <script>
+  document.querySelector("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const role = document.querySelector('input[name="role"]:checked').value;
+
+    if (username === "" || password === "") {
+      alert("Please fill in all fields!");
+      return;
+    }
+
+    // You can replace this with actual authentication later
+    if (role === "admin" || role === "student") {
+      alert(`Welcome ${username}! You are logged in as ${role}`);
+      window.location.href = "index.html"; // Redirect to dashboard
+    } else {
+      alert("Invalid login");
+    }
+  });
+</script>
 </body>
 </html>
