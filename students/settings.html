@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .settings-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .settings-container h2 {
+      text-align: center;
+      color: #0072ff;
+      margin-bottom: 30px;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .setting-item label {
+      font-weight: bold;
+    }
+
+    .theme-toggle {
+      padding: 10px 20px;
+      background: #0072ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .font-size-select {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .dark-mode {
+      background-color: #1e1e1e;
+      color: white;
+    }
+
+    .dark-mode .settings-container {
+      background-color: #2a2a2a;
+      color: white;
+      box-shadow: none;
+    }
+
+    .dark-mode .theme-toggle {
+      background-color: #ff9800;
+    }
+  </style>
+</head>
+<body class="dashboard-page">
+  <header>
+    <h1>⚙ Settings</h1>
+    <p>Customize your experience</p>
+  </header>
+
+  <nav class="nav-bar">
+    <a href="index.html">Dashboard</a>
+    <a href="books.html">Books</a>
+    <a href="students.html">Students</a>
+    <a href="login.html">Logout</a>
+  </nav>
+
+  <div class="settings-container">
+    <h2>Preferences</h2>
+
+    <div class="setting-item">
+      <label for="theme">Switch Theme:</label>
+      <button class="theme-toggle" id="themeToggle">Toggle Light/Dark</button>
+    </div>
+
+    <div class="setting-item">
+      <label for="fontSize">Font Size:</label>
+      <select id="fontSize" class="font-size-select">
+        <option value="14px">Small</option>
+        <option value="16px" selected>Medium</option>
+        <option value="18px">Large</option>
+        <option value="20px">Extra Large</option>
+      </select>
+    </div>
+  </div>
+
+  <footer>
+    <p>Developed by Owais Shakil Bhat &copy; 2025</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+    const fontSizeSelect = document.getElementById("fontSize");
+
+    // Theme Switch
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+
+    // Font Size Change
+    fontSizeSelect.addEventListener("change", () => {
+      document.body.style.fontSize = fontSizeSelect.value;
+    });
+  </script>
+</body>
+</html>

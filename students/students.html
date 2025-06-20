@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Management</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dashboard-page">
+  <header>
+    <h1>👨‍🎓 Student Management</h1>
+    <p>Manage student data and history</p>
+  </header>
+
+  <nav class="nav-bar">
+    <a href="index.html">Dashboard</a>
+    <a href="books.html">Books</a>
+    <a href="settings.html">Settings</a>
+    <a href="login.html">Logout</a>
+  </nav>
+
+  <main class="dashboard cards-layout">
+    <section class="card">
+      <h2>➕ Add Student</h2>
+      <form>
+        <input type="text" placeholder="Full Name" required />
+        <input type="text" placeholder="Roll Number" required />
+        <input type="text" placeholder="Course" required />
+        <input type="text" placeholder="Phone Number" required />
+        <button type="submit">Add Student</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>📄 Student List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Roll No.</th>
+            <th>Course</th>
+            <th>Contact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ali Khan</td>
+            <td>ST101</td>
+            <td>BCA</td>
+            <td>9876543210</td>
+          </tr>
+          <tr>
+            <td>Sara Malik</td>
+            <td>ST102</td>
+            <td>BBA</td>
+            <td>9876512345</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Developed by Owais Shakil Bhat &copy; 2025</p>
+  </footer>
+</body>
+</html>

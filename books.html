@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Management</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dashboard-page">
+  <header>
+    <h1>📘 Book Management</h1>
+    <p>Manage books in your digital library</p>
+  </header>
+
+  <nav class="nav-bar">
+    <a href="index.html">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="settings.html">Settings</a>
+    <a href="login.html">Logout</a>
+  </nav>
+
+  <main class="dashboard cards-layout">
+    <section class="card">
+      <h2>📗 Add Book</h2>
+      <form>
+        <input type="text" placeholder="Book Title" required />
+        <input type="text" placeholder="Author" required />
+        <input type="text" placeholder="ISBN Number" required />
+        <button type="submit">Add Book</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>📕 Issue Book</h2>
+      <form>
+        <input type="text" placeholder="Student Name" required />
+        <input type="text" placeholder="Book Title" required />
+        <button type="submit">Issue</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>📙 Return Book</h2>
+      <form>
+        <input type="text" placeholder="Book Title" required />
+        <input type="date" required />
+        <button type="submit">Return</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>💰 Calculate Fine</h2>
+      <form>
+        <input type="number" placeholder="Days Late" required />
+        <button type="submit">Calculate</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Developed by Owais Shakil Bhat &copy; 2025</p>
+  </footer>
+</body>
+</html>
