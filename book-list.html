@@ -3,20 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Students - LMS</title>
-  <link rel="stylesheet" href="../style.css" />
+  <title>Book List - LMS</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    .container {
-      background-color: var(--card);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 1100px;
-      margin: 30px auto;
-      overflow-x: auto;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
@@ -41,45 +30,40 @@
     body.dark tr:nth-child(even) {
       background-color: #2a2a2a;
     }
-
-    @media (max-width: 768px) {
-      table {
-        font-size: 14px;
-      }
-    }
   </style>
 </head>
 <body>
   <button id="themeToggle">🌙 Dark Mode</button>
 
   <div class="container">
-    <h2>👥 Registered Students</h2>
+    <h2>📖 Book List</h2>
 
     <table>
       <thead>
         <tr>
-          <th>Student Name</th>
-          <th>ID</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Course</th>
+          <th>Book Title</th>
+          <th>Author</th>
+          <th>ISBN</th>
+          <th>Genre</th>
+          <th>Available</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Owais Shakil Bhat</td>
-          <td>STU1001</td>
-          <td>bhatowais770@gmail.com</td>
-          <td>8082180859</td>
-          <td>BCA</td>
+          <td>Introduction to Python</td>
+          <td>Owais</td>
+          <td>978-0-123456-47-2</td>
+          <td>Programming</td>
+          <td>12</td>
         </tr>
         <tr>
-          <td>Zuhaib Jaffar</td>
-          <td>STU1002</td>
-          <td>zuhaib123@gmail.com</td>
-          <td>9090101010</td>
-          <td>BCA</td>
+          <td>Data Structures</td>
+          <td>Ellen</td>
+          <td>978-0-876543-21-0</td>
+          <td>Computer Science</td>
+          <td>5</td>
         </tr>
+        <!-- Add more rows as needed -->
       </tbody>
     </table>
   </div>

@@ -3,41 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Library Dashboard</title>
-  <link rel="stylesheet" href="css/style.css"/>
+  <title>Library Management System</title>
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    a.button {
+      padding: 14px 28px;
+      background: white;
+      color: #2575fc;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.3s;
+      border: 2px solid white;
+    }
+
+    a.button:hover {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      a.button {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
 </head>
-<body class="dashboard-page">
-  <header>
-    <h1>📚 Library Management System</h1>
-    <p>Welcome to your digital library dashboard!</p>
-  </header>
+<body>
 
-  <nav class="nav-bar">
-    <a href="books.html">Books</a>
-    <a href="students.html">Students</a>
-    <a href="settings.html">Settings</a>
-    <a href="login.html">Logout</a>
-  </nav>
+  <h1>📚 Welcome to Library Management System</h1>
+  <p>A complete digital solution to manage books, students, reminders, and more — designed for both Admins and Students.</p>
 
-  <main class="dashboard">
-    <div class="card">
-      <h2>Add / Manage Books</h2>
-      <p>Add, edit, issue, or return books.</p>
-    </div>
-
-    <div class="card">
-      <h2>Student Records</h2>
-      <p>Track student history and fines.</p>
-    </div>
-
-    <div class="card">
-      <h2>Reminders & Notifications</h2>
-      <p>Send alerts via Email/SMS.</p>
-    </div>
-  </main>
+  <div class="btn-group">
+    <a href="login.html" class="button">🔐 Login</a>
+    <a href="registration.html" class="button">📝 Register</a>
+  </div>
 
   <footer>
-    <p>Developed by Owais Shakil Bhat &copy; 2025</p>
+    Developed by <strong>Owais Shakil Bhat</strong> © 2025
   </footer>
+
 </body>
 </html>

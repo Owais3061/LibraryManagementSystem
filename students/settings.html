@@ -3,115 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Settings</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Settings - LMS</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    .settings-container {
-      max-width: 600px;
-      margin: 50px auto;
+    .profile-card {
+      background-color: var(--card);
       padding: 30px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
-
-    .settings-container h2 {
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+      margin: 30px auto;
       text-align: center;
-      color: #0072ff;
-      margin-bottom: 30px;
     }
 
-    .setting-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    h2 {
       margin-bottom: 20px;
+      font-size: 24px;
+      color: var(--button);
     }
 
-    .setting-item label {
+    .info {
+      font-size: 17px;
+      margin: 8px 0;
+      color: var(--text);
+    }
+
+    .info strong {
+      color: var(--button);
+    }
+
+    .dev-section {
+      margin-top: 30px;
+    }
+
+    .dev-section h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: var(--button);
+    }
+
+    .highlight {
       font-weight: bold;
+      color: var(--text);
+      font-size: 18px;
     }
 
-    .theme-toggle {
-      padding: 10px 20px;
-      background: #0072ff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+    .highlight-email {
+      font-weight: 500;
+      color: var(--text);
     }
 
-    .font-size-select {
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    .dark-mode {
-      background-color: #1e1e1e;
-      color: white;
-    }
-
-    .dark-mode .settings-container {
-      background-color: #2a2a2a;
-      color: white;
-      box-shadow: none;
-    }
-
-    .dark-mode .theme-toggle {
-      background-color: #ff9800;
+    @media (max-width: 500px) {
+      h2, h3 {
+        font-size: 20px;
+      }
+      .info {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
-<body class="dashboard-page">
-  <header>
-    <h1>⚙ Settings</h1>
-    <p>Customize your experience</p>
-  </header>
+<body>
+  <button id="themeToggle">🌙 Dark Mode</button>
 
-  <nav class="nav-bar">
-    <a href="index.html">Dashboard</a>
-    <a href="books.html">Books</a>
-    <a href="students.html">Students</a>
-    <a href="login.html">Logout</a>
-  </nav>
+  <div class="profile-card">
+    <h2>⚙️ <strong>Admin Profile</strong></h2>
 
-  <div class="settings-container">
-    <h2>Preferences</h2>
+    <div class="info"><strong>Name:</strong> <span class="highlight">Owais Shakil Bhat</span></div>
+    <div class="info"><strong>Email:</strong> <span class="highlight-email">bhatowais770@gmail.com</span></div>
+    <div class="info"><strong>Role:</strong> <span class="highlight">Admin</span></div>
 
-    <div class="setting-item">
-      <label for="theme">Switch Theme:</label>
-      <button class="theme-toggle" id="themeToggle">Toggle Light/Dark</button>
-    </div>
-
-    <div class="setting-item">
-      <label for="fontSize">Font Size:</label>
-      <select id="fontSize" class="font-size-select">
-        <option value="14px">Small</option>
-        <option value="16px" selected>Medium</option>
-        <option value="18px">Large</option>
-        <option value="20px">Extra Large</option>
-      </select>
+    <div class="dev-section">
+      <h3>👨‍💻 <strong>Developed By</strong></h3>
+      <div class="highlight">Owais Shakil Bhat</div>
+      <div class="highlight-email">bhatowais770@gmail.com</div>
     </div>
   </div>
 
-  <footer>
-    <p>Developed by Owais Shakil Bhat &copy; 2025</p>
-  </footer>
-
   <script>
     const toggleBtn = document.getElementById("themeToggle");
-    const fontSizeSelect = document.getElementById("fontSize");
-
-    // Theme Switch
+    function setTheme(mode) {
+      document.body.classList.toggle("dark", mode === "dark");
+      localStorage.setItem("theme", mode);
+      toggleBtn.innerText = mode === "dark" ? "🌞 Light Mode" : "🌙 Dark Mode";
+    }
     toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark");
+      setTheme(isDark ? "light" : "dark");
     });
-
-    // Font Size Change
-    fontSizeSelect.addEventListener("change", () => {
-      document.body.style.fontSize = fontSizeSelect.value;
-    });
+    const saved = localStorage.getItem("theme") || "light";
+    setTheme(saved);
   </script>
 </body>
 </html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Theme Toggle - LMS</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --bg: #f1f1f1;
+      --text: #111;
+      --card: #fff;
+      --button: #007bff;
+      --button-text: #fff;
+    }
+
+    body.dark {
+      --bg: #1e1e1e;
+      --text: #eee;
+      --card: #2c2c2c;
+      --button: #17a2b8;
+      --button-text: #fff;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: var(--card);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    button {
+      background-color: var(--button);
+      color: var(--button-text);
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    #themeToggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle">🌙 Dark Mode</button>
+
+  <div class="container">
+    <h2>🌐 Theme Toggle Demo</h2>
+    <form>
+      <label for="example">Example Field:</label>
+      <input type="text" id="example" placeholder="Try switching themes!" />
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+
+    function setTheme(mode) {
+      document.body.classList.toggle("dark", mode === "dark");
+      localStorage.setItem("theme", mode);
+      toggleBtn.innerText = mode === "dark" ? "🌞 Light Mode" : "🌙 Dark Mode";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      const isDark = document.body.classList.contains("dark");
+      setTheme(isDark ? "light" : "dark");
+    });
+
+    // Load saved theme
+    const saved = localStorage.getItem("theme") || "light";
+    setTheme(saved);
+  </script>
+</body>
+</html>

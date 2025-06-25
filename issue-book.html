@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Issue Book - LMS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button id="themeToggle">🌙 Dark Mode</button>
+
+  <div class="container">
+    <h2>📤 Issue Book</h2>
+
+    <form>
+      <label for="studentName">Student Name:</label>
+      <input type="text" id="studentName" name="studentName" required />
+
+      <label for="studentId">Student ID:</label>
+      <input type="text" id="studentId" name="studentId" required />
+
+      <label for="bookTitle">Book Title / ISBN:</label>
+      <input type="text" id="bookTitle" name="bookTitle" required />
+
+      <label for="issueDate">Issue Date:</label>
+      <input type="date" id="issueDate" name="issueDate" required />
+
+      <label for="returnDate">Return Date:</label>
+      <input type="date" id="returnDate" name="returnDate" required />
+
+      <button type="submit">✅ Issue Book</button>
+    </form>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+
+    function setTheme(mode) {
+      document.body.classList.toggle("dark", mode === "dark");
+      localStorage.setItem("theme", mode);
+      toggleBtn.innerText = mode === "dark" ? "🌞 Light Mode" : "🌙 Dark Mode";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      const isDark = document.body.classList.contains("dark");
+      setTheme(isDark ? "light" : "dark");
+    });
+
+    const saved = localStorage.getItem("theme") || "light";
+    setTheme(saved);
+  </script>
+</body>
+</html>
