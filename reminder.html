@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>📚 Book Return Reminder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:," />
+
+  <style>
+    :root {
+      --bg: #f1f1f1;
+      --text: #111;
+      --card: #fff;
+      --button: #007bff;
+      --button-text: #fff;
+    }
+    body.dark {
+      --bg: #1e1e1e;
+      --text: #eee;
+      --card: #2c2c2c;
+      --button: #17a2b8;
+      --button-text: #fff;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: var(--card);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+      background-color: var(--card);
+      color: var(--text);
+    }
+    input:focus {
+      outline: none;
+      border-color: var(--button);
+    }
+    button {
+      background-color: var(--button);
+      color: var(--button-text);
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    button:hover {
+      transform: scale(1.02);
+      opacity: 0.95;
+    }
+    #themeToggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle">Toggle Theme</button>
+
+  <div class="container">
+    <h2>📬 Book Return Reminder</h2>
+    <form id="reminderForm">
+      <label for="name">Student Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="book">Book Title</label>
+      <input type="text" id="book" name="book" required />
+
+      <label for="returnDate">Return Date</label>
+      <input type="date" id="returnDate" name="returnDate" required />
+
+      <label for="to_email">Student Email</label>
+      <input type="email" id="to_email" name="to_email" required />
+
+      <button type="submit">Send Reminder</button>
+    </form>
+  </div>
+
+  <!-- ✅ EmailJS SDK v4 global script -->
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+  ></script>
+  <script>
+    emailjs.init("XjqVN1fDsc0W1b69S");
+
+    document
+      .getElementById("themeToggle")
+      .addEventListener("click", () => document.body.classList.toggle("dark"));
+
+    document
+      .getElementById("reminderForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const params = {
+          name: form.name.value,
+          book: form.book.value,
+          returnDate: form.returnDate.value,
+          to_email: form.to_email.value,
+        };
+
+        emailjs
+          .send("service_jm6569a", "template_7uv6sla", params)
+          .then(() => {
+            alert("✅ Reminder sent successfully!");
+            form.reset();
+          })
+          .catch((err) => {
+            console.error("❌ EMAILJS ERROR:", err);
+            alert("❌ Failed to send reminder. Check console.");
+          });
+      });
+  </script>
+</body>
+</html>

@@ -4,14 +4,169 @@
   <meta charset="UTF-8">
   <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      emailjs.init("XjqVN1fDsc0W1b69S"); // ✅ Your Public Key
+    })();
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1976d2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .dashboard-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .dashboard-grid, .reminder-box {
+      flex: 1 1 300px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: center;
+    }
+    .card {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      background: #e3f2fd;
+      transform: scale(1.03);
+    }
+    .reminder-box h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+    .reminder-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    .reminder-box button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #1976d2;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: block;
+      margin: 0 auto;
+    }
+    .reminder-box button:hover {
+      background: #0d47a1;
+    }
+  </style>
 </head>
-<body>
-  <h1>📚 Library Management System - Dashboard</h1>
+<script type="module">
+  import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
 
-  <div class="dashboard-grid">
-    <a href="books.html" class="card">Add / Manage Books</a>
-    <a href="student-list.html" class="card">Student Records</a>
-    <a href="forget-password.html" class="card">Reminders</a>
+  emailjs.init("XjqVN1fDsc0W1b69S"); // ✅ Your Public Key
+
+  document.getElementById("reminderForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const params = {
+      name: form.name.value,
+      book: form.book.value,
+      returnDate: form.returnDate.value,
+      to_email: form.to_email.value,
+    };
+
+    emailjs.send("service_jm6569a", "template_7uv6sla", params)
+      .then(() => {
+        alert("✅ Reminder sent successfully to " + params.to_email);
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("❌ EMAILJS ERROR:", error);
+        alert("❌ Failed to send reminder. Please check your template, service ID, or key.");
+      });
+  });
+</script>
+
+<body>
+  <header>
+    <h1>📚 Library Management System - Dashboard</h1>
+  </header>
+
+  <div class="dashboard-section">
+    <div class="dashboard-grid">
+      <a href="books.html" class="card">📖 Add / Manage Books</a>
+      <a href="student-list.html" class="card">👥 Student Records</a>
+      <a href="forget-password.html" class="card">🔐 Forgot Password</a>
+    </div>
+
+    <!-- Reminder Form Using EmailJS -->
+    <div class="reminder-box">
+      <h2>📬 Send Book Return Reminder</h2>
+      <form id="reminderForm">
+        <input type="text" name="name" placeholder="Student Name" required />
+        <input type="text" name="book" placeholder="Book Title" required />
+        <input type="date" name="returnDate" required />
+        <input type="email" name="to_email" placeholder="Student Email" required />
+        <button type="submit">Send Reminder</button>
+      </form>
+    </div>
   </div>
+
+  <script>
+    document.getElementById("reminderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const params = {
+        name: form.name.value,
+        book: form.book.value,
+        returnDate: form.returnDate.value,
+        to_email: form.to_email.value,
+      };
+
+      emailjs.send("service_jm6569a", "template_7uv6sla", params)
+        .then(function(response) {
+          alert("✅ Reminder sent successfully to " + params.to_email);
+          form.reset();
+        }, function(error) {
+          console.error("❌ Error:", error);
+          alert("❌ Failed to send reminder. Please check console.");
+        });
+    });
+  </script>
 </body>
 </html>

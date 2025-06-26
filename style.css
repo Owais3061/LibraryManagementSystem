@@ -23,7 +23,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -55,6 +56,14 @@ input, select {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 15px;
+  background-color: var(--card);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--button);
 }
 
 button {
@@ -67,11 +76,12 @@ button {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  opacity: 0.9;
+  transform: scale(1.02);
+  opacity: 0.95;
 }
 
 #themeToggle {
@@ -87,6 +97,7 @@ button:hover {
   cursor: pointer;
   z-index: 1000;
 }
+
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -108,4 +119,9 @@ button:hover {
 .dash-card:hover {
   transform: scale(1.05);
   background-color: #0056b3;
+}
+
+/* Optional: Reminder form spacing */
+#reminder {
+  margin-top: 40px;
 }
