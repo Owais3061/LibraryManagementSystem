@@ -1,125 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>📚 Book Return Reminder</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✅ Manifest & Icons -->
-  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library Management System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="icons/icon-192.png" type="image/png">
-
+  <link rel="manifest" href="manifest.json">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      padding: 30px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .top-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .top-buttons button {
-      background-color: #1976d2;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .top-buttons button:hover {
-      background-color: #0d47a1;
-    }
-
-    form {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    input, button[type="submit"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button[type="submit"] {
-      background: #4CAF50;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
       color: white;
-      font-weight: bold;
-      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
     }
 
-    button[type="submit"]:hover {
-      opacity: 0.9;
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    a.button {
+      padding: 14px 28px;
+      background: white;
+      color: #2575fc;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.3s;
+      border: 2px solid white;
+    }
+
+    a.button:hover {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      a.button {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h2>📚 Library Management System</h2>
-  </header>
+  <h1>📚 Welcome to Library Management System</h1>
+  <p>A complete digital solution to manage books, students, reminders, and more — designed for both Admins and Students.</p>
 
-  <div class="top-buttons">
-    <button onclick="location.href='login.html'">🔐 Login</button>
-    <button onclick="location.href='register.html'">📝 Register</button>
+  <div class="btn-group">
+    <a href="login.html" class="button">🔐 Login</a>
+    <a href="register.html" class="button">📝 Register</a>
   </div>
 
-  <h3 align="center">📩 Send Book Return Reminder</h3>
-  <form id="reminderForm">
-    <input type="text" name="name" placeholder="Student Name" required />
-    <input type="text" name="book" placeholder="Book Title" required />
-    <input type="date" name="returnDate" required />
-    <input type="email" name="to_email" placeholder="Student Email" required />
-    <button type="submit">Send Reminder</button>
-  </form>
-
-  <!-- ✅ Use EmailJS v4 - ES Module -->
-  <script type="module">
-    import * as emailjs from "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/+esm";
-
-    emailjs.init("XjqVN1fDsc0W1b69S"); // Your Public Key
-
-    document.getElementById("reminderForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const form = e.target;
-      const params = {
-        name: form.name.value,
-        book: form.book.value,
-        returnDate: form.returnDate.value,
-        to_email: form.to_email.value
-      };
-
-      emailjs.send("service_jm6569a", "template_7uv6sla", params)
-        .then(() => {
-          alert("✅ Reminder sent successfully to " + params.to_email);
-          form.reset();
-        })
-        .catch((error) => {
-          console.error("❌ EMAILJS ERROR:", error);
-          alert("❌ Failed to send reminder.\nSee console for details.");
-        });
-    });
-  </script>
+  <footer>
+    Developed by <strong>Owais Shakil Bhat</strong> © 2025
+  </footer>
 
 </body>
 </html>
